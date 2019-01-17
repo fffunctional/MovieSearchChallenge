@@ -78,7 +78,8 @@ class App extends Component {
               {arr.filter(i => i.poster_path).map(i =>
                 <div key={i.id} style={{clear: 'both', padding: '50px'}}>
                   <div style={{float: 'left'}}>
-                    <img src={'http://image.tmdb.org/t/p/w185' + i.poster_path}/>
+                    <img src={'http://image.tmdb.org/t/p/w185' + i.poster_path}
+                         alt={i.original_title}/>
                   </div>
                   <div>
                     <h3>{i.original_title}</h3>

@@ -1,69 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 # Movie Search Challenge
+
+## Installation
+
+`git clone https://github.com/fffunctional/MovieSearchChallenge.git`
+
+`cd` into the directory and:
+`npm install`
+`npm run start`
+
+Voila, the application should now be visible at `localhost:3000`.
+
+## Challenges
+
+The first challenge to become apparent was that, based on the specification
+and mockup, the application ran the risk of firing off dozens of useless
+requests to the API per second with every changing keystroke: not cool. One
+solution to this would be to include a submit button so as to fire off requests
+only when the input is complete, but that's no fun. I elected instead to look
+into how React handles debounce and was able to import the well-known lodash
+solution into my project, though I expect there are other ways at this stage.
+
+The main difficulties otherwise were coming to terms with the unfamiliar React
+framework and how it does things. Paradoxically the hardest thing of all was
+importing Bootstrap styles to make the pagination element look not awful: with
+the clock ticking, I just couldn't find a clear explanation of how this goes. I
+presume it's actually a really simple process that a React developer with any
+amount of experience could quickly tell me how to do! But in the end I took
+the weaselly shortcut and pasted the minified Bootstrap CSS into my existing
+CSS file.
+
+## Improvements
+
+I don't much like the way any of this looks; I was assuming that this more a
+development challenge than a design one (if I'm wrong, then: oops) so, having
+wasted too much time trying to figure out how to import Bootstrap styles, I
+threw in just enough CSS to make things not awful.
+
+I wanted to do the "link to a specific search" optional task to but in all
+honesty that would have taken me beyond the allotted time. I can see that it
+would be easy to generate a link based on the current state variables; the
+question is how easy it then is for React to pick up the URL querystring, at
+which point it would be a simple matter to extract the variables and set the
+state accordingly as the component is constructed. As I say I didn't research
+this yet, if it isn't a deadly simple matter then I would certainly assume it
+could be done by investigation into React routers and routing generally.
+
+Another dishonest shortcut I took because of time constraints was to filter out results from the API data that didn't come with a poster_path: it would be
+better in this case to show the result and some kind of default image, rather
+than pretending that the result doesn't exist. But it was a quick way to make
+the simple app look less ugly and "broken".
+
+Another nice-to-have for this project would be the ability to sort the output
+more meaningfully, e.g. by director, date, country/language.
